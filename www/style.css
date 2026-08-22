@@ -1,0 +1,281 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+    color: #17213c;
+}
+
+header {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto 30px;
+    padding: 45px;
+    background: linear-gradient(135deg, #2864e8, #243eae);
+    border-radius: 22px;
+    color: white;
+    box-shadow: 0 10px 25px rgba(36, 62, 174, 0.18);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-picture {
+    width: 145px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.intro {
+    flex: 1;
+}
+
+.label {
+    display: inline-block;
+    margin: 0 0 15px;
+    padding: 7px 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.intro h1 {
+    margin: 0 0 10px;
+    font-size: 46px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    margin: 0 0 28px;
+    font-size: 17px;
+    color: #e5ebff;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 11px 22px;
+    margin-right: 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: white;
+    color: #2454c4;
+    transform: translateY(-3px);
+}
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.card,
+.side-card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(24, 48, 95, 0.08);
+}
+
+.card {
+    padding: 32px;
+    margin-bottom: 25px;
+    scroll-margin-top: 25px;
+}
+
+.card h2,
+.side-card h2 {
+    margin-top: 0;
+    color: #234db2;
+    font-size: 25px;
+}
+
+.card h2 {
+    margin-bottom: 20px;
+}
+
+.card p {
+    line-height: 1.8;
+    color: #4b5872;
+    font-size: 16px;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.skill {
+    padding: 23px;
+    background: #f5f7fc;
+    border-radius: 14px;
+    border: 1px solid #e5e9f3;
+    transition: 0.3s;
+}
+
+.skill:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(36, 62, 174, 0.12);
+    border-color: #b9c9f5;
+}
+
+.skill-number {
+    color: #2864e8;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.skill h3 {
+    margin: 0 0 8px;
+    color: #1e367c;
+}
+
+.skill p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.side-card {
+    padding: 28px;
+}
+
+.info {
+    padding: 15px 0;
+    border-bottom: 1px solid #e9edf5;
+}
+
+.info:last-child {
+    border-bottom: none;
+}
+
+.info span {
+    display: block;
+    font-size: 13px;
+    color: #7a8499;
+    margin-bottom: 5px;
+}
+
+.info strong {
+    color: #263b78;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.goal {
+    background: linear-gradient(135deg, #eef3ff, #ffffff);
+    border-top: 4px solid #2864e8;
+}
+
+.goal p {
+    color: #4b5872;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    margin-top: 25px;
+    color: #68738a;
+}
+
+footer p {
+    margin: 8px;
+}
+
+@media (max-width: 750px) {
+
+    header {
+        padding: 40px 25px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-picture {
+        width: 125px;
+        height: 125px;
+    }
+
+    .intro h1 {
+        font-size: 36px;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+}
+
+@media (max-width: 450px) {
+
+    header {
+        width: 94%;
+        margin-top: 20px;
+    }
+
+    main {
+        width: 94%;
+    }
+
+    .profile-picture {
+        width: 115px;
+        height: 115px;
+    }
+
+    .intro h1 {
+        font-size: 30px;
+    }
+
+    nav a {
+        padding: 10px 16px;
+    }
+
+    .card,
+    .side-card {
+        padding: 23px;
+    }
+}
