@@ -1,81 +1,108 @@
-# Alavanza Student Profile
+# Alavanza Student Profile with Edit Profile Feature 
 
 ## 1. Project Description
 
-The Student Profile is a multi-page web application developed as part of the BSIT course. It presents the student's personal information, education, skills, projects, and contact details through a simple, organized, and responsive design.
+The Student Profile application is a responsive web-based student portfolio created using HTML, CSS, and JavaScript. It presents personal information, skills, projects, and contact information in an organized and user-friendly interface.
 
-The application was developed using HTML and CSS and converted into an Android application using Apache Cordova. It is designed to work properly on desktop, tablet, and mobile devices.
+The application was developed as an Apache Cordova project and can run on desktop browsers, tablets, and mobile devices.
 
 ## 2. Application Pages
 
 ### Profile
 
-The Profile page serves as the homepage of the application. It contains the student's profile picture, complete name, short introduction, tagline, and navigation links to the other pages.
+The Profile page serves as the homepage of the application. It displays the student's profile picture, name, course, year level, introduction, skills, and personal goal. It also provides navigation to the other pages and includes the Edit Profile functionality.
 
 ### About
 
-The About page provides information about the student, including personal background, interests, education, and goals or aspirations.
+The About page provides more information about the student, including a personal introduction, interests, education, and goals.
 
 ### Skills
 
-The Skills page presents the student's technical and personal skills. Each skill includes a short description explaining the student's abilities.
+The Skills page presents the student's technical and personal skills. Each skill includes a short description.
 
 ### Projects
 
-The Projects page showcases projects that the student has worked on. Each project includes its title, description, role or contribution, and technologies or tools used.
+The Projects page showcases academic and personal projects. Each project includes its title, description, role or contribution, and technologies used.
 
 ### Contact
 
-The Contact page provides the student's contact information and online profile. It allows visitors to view the available information for connecting with the student.
+The Contact page provides information for connecting with the student, including email, phone number, and GitHub profile.
 
-## 3. Navigation
+## 3. Profile Editing
 
-The application uses standard HTML links to navigate between the different pages.
+The application includes an **Edit Profile** interface on the Profile page. Users can click the **Edit Profile** button to open the editing form.
 
-The navigation menu is available on all pages and includes:
+The following information can be modified:
 
-- Profile
-- About
+- Full Name
+- Course
+- Year Level
+- About Me
 - Skills
-- Projects
-- Contact
 
-Users can easily move between the different pages and return to the Profile page using the navigation links.
+After entering the information, the user can click **Save** to apply the changes or **Cancel** to return to the profile without saving changes.
 
-No JavaScript is used for page navigation. The application uses regular HTML anchor links to connect each page.
+## 4. JavaScript Functionality
 
-## 4. Responsive Design
+JavaScript is used to make the Student Profile application interactive and dynamic.
 
-The application uses responsive CSS techniques to ensure that the pages display properly across different screen sizes.
+### Form Handling
+
+JavaScript retrieves the values entered into the Edit Profile form and processes the submitted information.
+
+### Validation
+
+JavaScript validates the required fields before saving. The Full Name, Course, Year Level, About Me, and Skills fields must not be empty.
+
+If a required field is empty, the application displays a message asking the user to provide the missing information.
+
+### Profile Updates
+
+After valid information is submitted, JavaScript updates the profile information dynamically without manually editing the HTML content.
+
+### Save
+
+The Save function validates the entered information, stores the updated profile data, updates the displayed profile, and returns the user to the Profile view.
+
+### Cancel
+
+The Cancel function closes the Edit Profile form and returns to the Profile view without saving the changes made in the form.
+
+## 5. Local Data Storage
+
+The application uses JavaScript `localStorage` to store and retrieve profile information.
+
+The following information is stored:
+
+- Full Name
+- Course
+- Year Level
+- About Me
+- Skills
+
+When the user saves changes, the updated profile information is stored in `localStorage`. When the application is opened again, JavaScript retrieves the saved information and displays it automatically.
+
+This allows the updated profile information to remain available even after closing and reopening the application.
+
+## 6. Responsive Design
+
+The application uses responsive HTML and CSS to provide a consistent layout across different screen sizes.
 
 ### Desktop
 
-The layout is optimized for wider screens with organized content, comfortable spacing, and readable text.
+The application is designed to display the content clearly on larger desktop screens with appropriate spacing, navigation, and card layouts.
 
 ### Tablet
 
-The layout adjusts to tablet screen sizes while maintaining proper spacing, readable content, and usable navigation.
+The layout automatically adjusts to tablet screen sizes while maintaining readable text, accessible navigation, and properly arranged content.
 
 ### Mobile
 
-The layout adapts to smaller screens by stacking content, adjusting font sizes, and allowing navigation links to wrap properly.
+The application adapts to smaller mobile screens by adjusting the layout, spacing, navigation, buttons, and form elements to prevent horizontal scrolling and content overlap.
 
-The application was tested on desktop, tablet, and mobile devices to ensure that the pages do not have horizontal scrolling, overlapping content, cut-off elements, or broken navigation.
+The application was tested on desktop, tablet, and mobile devices to ensure that the pages remain usable and readable across different screen sizes.
 
-## 5. UI/UX Principles Applied
-
-The following UI/UX principles were applied throughout the application:
-
-- **Consistency** – The same colors, typography, navigation style, spacing, and visual elements are used across all pages.
-- **Responsive Design** – The layout automatically adjusts to desktop, tablet, and mobile screen sizes.
-- **Visual Hierarchy** – Headings, sections, and important information are organized clearly to guide the user.
-- **Readability** – Appropriate font sizes, spacing, and color contrast are used to make the content easy to read.
-- **Usability** – Navigation links are available on every page for easy movement between sections.
-- **Accessibility** – Images include alternative text and the content is organized using clear headings.
-- **User-Friendly Layout** – Information is presented in organized sections and cards to make the application easy to understand and use.
-- **Consistent User Experience** – All five pages follow the same overall design and visual style.
-
-## 6. How to Run
+## 7. How to Run
 
 ### Requirements
 
@@ -83,15 +110,12 @@ The following UI/UX principles were applied throughout the application:
 - Apache Cordova
 - Android Studio
 - Android SDK
-- Android device with USB debugging enabled
+- Java JDK 17
+- Android device or emulator
 
-### Using Command Prompt
+### Step 1: Open the Project
 
-1. Open the project folder in Visual Studio Code or Command Prompt.
+Open Git Bash or Command Prompt and navigate to the project folder:
 
-2. Navigate to the project directory.
-
-3. Prepare the Android platform:
-
-```cmd
-cordova prepare android
+```bash
+cd ~/Downloads/Alavanza_StudentProfile

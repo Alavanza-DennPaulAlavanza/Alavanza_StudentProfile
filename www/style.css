@@ -378,3 +378,115 @@ footer p {
         text-align: center;
     }
 }
+
+
+
+.profile-details {
+    background: #f5f7fc;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    border: 1px solid #e5e9f3;
+}
+
+.profile-details p {
+    margin: 7px 0;
+}
+
+.profile-details strong {
+    color: #263b78;
+}
+
+.edit-button-container {
+    text-align: center;
+    margin: 10px 0 30px;
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-size: 15px;
+}
+
+.edit-button,
+.save-button {
+    background: #2864e8;
+    color: white;
+}
+
+.edit-button:hover,
+.save-button:hover {
+    background: #243eae;
+}
+
+.cancel-button {
+    background: #e8ecf4;
+    color: #263b78;
+}
+
+.cancel-button:hover {
+    background: #dce2ee;
+}
+
+.edit-profile {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #263b78;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d7ddea;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #263b78;
+    background: #f9faff;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2864e8;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+@media (max-width: 450px) {
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .edit-button,
+    .save-button,
+    .cancel-button {
+        width: 100%;
+    }
+}
