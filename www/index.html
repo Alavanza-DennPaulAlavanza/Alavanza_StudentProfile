@@ -12,7 +12,20 @@
     <header>
         <div class="header-content">
 
-            <img class="profile-picture" src="profile.jpg" alt="Student profile picture">
+            <img
+    id="profilePicture"
+    class="profile-picture"
+    src="profile.jpg"
+    alt="Student profile picture"
+>
+
+<button
+    type="button"
+    class="change-picture-button"
+    onclick="takeProfilePicture()"
+>
+    Change Profile Picture
+</button>
 
             <div class="intro">
                 <p class="label">MY STUDENT PROFILE</p>
@@ -177,7 +190,8 @@
         <p>Student Profile · BSIT · Xavier University Ateneo de Cagayan</p>
     </footer>
 
-    <script src="script.js"></script>
+   <script src="cordova.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

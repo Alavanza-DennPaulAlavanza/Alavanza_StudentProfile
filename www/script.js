@@ -104,6 +104,63 @@ function saveProfile() {
     cancelEdit();
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+function takeProfilePicture() {
+    navigator.camera.getPicture(
+        function(imageURI) {
+            window.resolveLocalFileSystemURL(
+                imageURI,
+                function(fileEntry) {
+                    fileEntry.file(
+                        function(file) {
+                            const reader = new FileReader();
+
+                            reader.onloadend = function() {
+                                const imageSource = reader.result;
+                                const profilePicture = document.getElementById("profilePicture");
+
+                                profilePicture.src = imageSource;
+
+                                localStorage.setItem("profilePicture", imageSource);
+                            };
+
+                            reader.readAsDataURL(file);
+                        },
+                        function() {
+                            alert("Unable to read the captured picture.");
+                        }
+                    );
+                },
+                function() {
+                    alert("Unable to access the captured picture.");
+                }
+            );
+        },
+        function(error) {
+            if (error) {
+                alert("Camera cancelled or failed.");
+            }
+        },
+        {
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            encodingType: Camera.EncodingType.JPEG,
+            mediaType: Camera.MediaType.PICTURE,
+            correctOrientation: true,
+            saveToPhotoAlbum: false
+        }
+    );
+}
+
+function loadProfilePicture() {
+    const savedPicture = localStorage.getItem("profilePicture");
+
+    if (savedPicture) {
+        document.getElementById("profilePicture").src = savedPicture;
+    }
+}
+
+document.addEventListener("deviceready", function() {
     displayProfile();
-});
+    loadProfilePicture();
+}, false);

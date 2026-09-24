@@ -1,38 +1,38 @@
-# Alavanza Student Profile with Edit Profile Feature 
+# Alavanza Student Profile
 
 ## 1. Project Description
 
-The Student Profile application is a responsive web-based student portfolio created using HTML, CSS, and JavaScript. It presents personal information, skills, projects, and contact information in an organized and user-friendly interface.
+Alavanza Student Profile is a Cordova-based student profile web application developed as part of the ITCC 41 activities. The application presents the student's personal information, background, skills, projects, and contact information.
 
-The application was developed as an Apache Cordova project and can run on desktop browsers, tablets, and mobile devices.
+The application also includes an Edit Profile feature and a device camera feature that allows the user to capture and replace the profile picture.
 
 ## 2. Application Pages
 
 ### Profile
 
-The Profile page serves as the homepage of the application. It displays the student's profile picture, name, course, year level, introduction, skills, and personal goal. It also provides navigation to the other pages and includes the Edit Profile functionality.
+The Profile page serves as the main page of the application. It displays the student's profile picture, name, course, year level, personal information, skills, and goal.
+
+It also contains the Edit Profile feature and the Change Profile Picture button.
 
 ### About
 
-The About page provides more information about the student, including a personal introduction, interests, education, and goals.
+The About page provides additional information about the student, including background and interests.
 
 ### Skills
 
-The Skills page presents the student's technical and personal skills. Each skill includes a short description.
+The Skills page presents the student's technical and personal skills.
 
 ### Projects
 
-The Projects page showcases academic and personal projects. Each project includes its title, description, role or contribution, and technologies used.
+The Projects page displays the student's projects and development activities.
 
 ### Contact
 
-The Contact page provides information for connecting with the student, including email, phone number, and GitHub profile.
+The Contact page provides contact information and ways to reach the student.
 
 ## 3. Profile Editing
 
-The application includes an **Edit Profile** interface on the Profile page. Users can click the **Edit Profile** button to open the editing form.
-
-The following information can be modified:
+The application includes an Edit Profile feature that allows the user to modify:
 
 - Full Name
 - Course
@@ -40,82 +40,105 @@ The following information can be modified:
 - About Me
 - Skills
 
-After entering the information, the user can click **Save** to apply the changes or **Cancel** to return to the profile without saving changes.
+The user can select the Edit Profile button to open the editing form.
 
-## 4. JavaScript Functionality
+The Save button validates the required fields and saves the updated information.
 
-JavaScript is used to make the Student Profile application interactive and dynamic.
+The Cancel button closes the editing form without saving new changes.
 
-### Form Handling
+Profile information is stored using browser localStorage so that the saved information can be loaded again when the application is opened.
 
-JavaScript retrieves the values entered into the Edit Profile form and processes the submitted information.
+## 4. Camera Integration
 
-### Validation
+The application includes an interactive Change Profile Picture feature using the Cordova Camera Plugin.
 
-JavaScript validates the required fields before saving. The Full Name, Course, Year Level, About Me, and Skills fields must not be empty.
+The process is:
 
-If a required field is empty, the application displays a message asking the user to provide the missing information.
+Change Profile Picture → Open Camera → Capture Image → Update Profile Picture
 
-### Profile Updates
+When the user selects Change Profile Picture, the application uses the device camera to capture a new image.
 
-After valid information is submitted, JavaScript updates the profile information dynamically without manually editing the HTML content.
+After the picture is captured, the application processes the returned image and displays it as the new profile picture.
 
-### Save
+The new picture replaces the previous profile picture.
 
-The Save function validates the entered information, stores the updated profile data, updates the displayed profile, and returns the user to the Profile view.
+## 5. Device Feature Integration
 
-### Cancel
+Cordova is used because a normal web browser does not directly provide the same access to native Android device features.
 
-The Cancel function closes the Edit Profile form and returns to the Profile view without saving the changes made in the form.
+The Cordova Camera Plugin provides communication between the JavaScript application and the Android device camera.
 
-## 5. Local Data Storage
+The application waits for the Cordova `deviceready` event before using native Cordova functionality.
 
-The application uses JavaScript `localStorage` to store and retrieve profile information.
+The following plugins are used:
 
-The following information is stored:
+- cordova-plugin-camera
+- cordova-plugin-file
 
-- Full Name
-- Course
-- Year Level
-- About Me
-- Skills
+The Camera Plugin provides access to the device camera.
 
-When the user saves changes, the updated profile information is stored in `localStorage`. When the application is opened again, JavaScript retrieves the saved information and displays it automatically.
+The File Plugin allows the application to access and process the captured image file.
 
-This allows the updated profile information to remain available even after closing and reopening the application.
+## 6. Image Handling
 
-## 6. Responsive Design
+After the user captures an image, the Camera Plugin returns the captured image to the application.
 
-The application uses responsive HTML and CSS to provide a consistent layout across different screen sizes.
+The File Plugin is used to access the captured image file.
+
+JavaScript reads the image and converts it into a format that can be displayed by the profile picture element.
+
+The new image is then assigned to the profile picture.
+
+The application also stores the processed image in localStorage so that the profile picture can be loaded again when the application starts.
+
+The application therefore supports profile picture replacement and image persistence.
+
+## 7. Error Handling
+
+The application includes error and cancellation handling for the camera feature.
+
+### Camera Permission Denial
+
+If the application does not have permission to access the camera, the camera operation can fail and an error message is displayed.
+
+### Camera Cancellation
+
+If the user cancels the camera operation, the application does not crash and the existing profile picture remains.
+
+### Camera Errors
+
+If an error occurs while opening the camera or processing the captured image, the application displays an appropriate error message instead of crashing.
+
+## 8. Responsive Design
+
+The application uses responsive HTML and CSS so that the interface can adapt to different screen sizes.
 
 ### Desktop
 
-The application is designed to display the content clearly on larger desktop screens with appropriate spacing, navigation, and card layouts.
+The application can be viewed on desktop computers with a wider layout.
 
 ### Tablet
 
-The layout automatically adjusts to tablet screen sizes while maintaining readable text, accessible navigation, and properly arranged content.
+The layout adjusts to tablet screen sizes while maintaining readable content and accessible controls.
 
 ### Mobile
 
-The application adapts to smaller mobile screens by adjusting the layout, spacing, navigation, buttons, and form elements to prevent horizontal scrolling and content overlap.
+The application adapts to smaller mobile screens. Buttons, text, profile information, and navigation remain usable on smaller displays.
 
-The application was tested on desktop, tablet, and mobile devices to ensure that the pages remain usable and readable across different screen sizes.
-
-## 7. How to Run
+## 9. How to Run
 
 ### Requirements
 
+Install the following:
+
 - Node.js
 - Apache Cordova
+- Java JDK
 - Android Studio
 - Android SDK
-- Java JDK 17
-- Android device or emulator
+- Android device with USB debugging enabled
 
-### Step 1: Open the Project
-
-Open Git Bash or Command Prompt and navigate to the project folder:
+### Install Cordova
 
 ```bash
-cd ~/Downloads/Alavanza_StudentProfile
+npm install -g cordova
