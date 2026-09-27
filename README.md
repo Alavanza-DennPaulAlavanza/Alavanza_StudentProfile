@@ -1,144 +1,324 @@
-# Alavanza Student Profile
+Alavanza Student Profile
 
-## 1. Project Description
 
-Alavanza Student Profile is a Cordova-based student profile web application developed as part of the ITCC 41 activities. The application presents the student's personal information, background, skills, projects, and contact information.
+1. Project Description
 
-The application also includes an Edit Profile feature and a device camera feature that allows the user to capture and replace the profile picture.
+The Alavanza Student Profile is a Cordova-based mobile student profile application developed as part of the course activities Mobile Development.
 
-## 2. Application Pages
+The application allows students to log in securely, view their personal profile, edit their information, update their profile picture using the device camera, and log out of the application.
 
-### Profile
+For Activity 7, the application was upgraded from a local-storage-based profile system into a database-driven application using a PHP backend/API and MySQL database managed through phpMyAdmin.
 
-The Profile page serves as the main page of the application. It displays the student's profile picture, name, course, year level, personal information, skills, and goal.
+The application follows this basic architecture:
 
-It also contains the Edit Profile feature and the Change Profile Picture button.
+Cordova Application → PHP API/Backend → MySQL Database
 
-### About
+2. Application Pages
+Profile
 
-The About page provides additional information about the student, including background and interests.
+The Profile page displays the authenticated student's information, including their name, course, year level, About Me information, skills, and profile picture.
 
-### Skills
+About
 
-The Skills page presents the student's technical and personal skills.
+The About page provides additional information about the student and their background.
 
-### Projects
+Skills
 
-The Projects page displays the student's projects and development activities.
+The Skills page displays the student's technical and personal skills.
 
-### Contact
+Projects
 
-The Contact page provides contact information and ways to reach the student.
+The Projects page presents the student's projects and activities related to Information Technology.
 
-## 3. Profile Editing
+Contact
 
-The application includes an Edit Profile feature that allows the user to modify:
+The Contact page provides contact-related information.
 
-- Full Name
-- Course
-- Year Level
-- About Me
-- Skills
+Login
 
-The user can select the Edit Profile button to open the editing form.
+The Login page allows the student to authenticate using their Student ID and password before accessing the protected Student Profile functionality.
 
-The Save button validates the required fields and saves the updated information.
+The basic authentication flow is:
 
-The Cancel button closes the editing form without saving new changes.
+Login → Authentication → Student Profile
 
-Profile information is stored using browser localStorage so that the saved information can be loaded again when the application is opened.
+3. Authentication
 
-## 4. Camera Integration
+The application requires the student to log in before accessing the protected profile functionality.
 
-The application includes an interactive Change Profile Picture feature using the Cordova Camera Plugin.
+The student provides:
 
-The process is:
+Student ID
+Password
+
+The Cordova application sends the login information to the PHP backend through an API request.
+
+The PHP backend verifies the credentials against the MySQL database.
+
+If the credentials are valid, the student is allowed to access the Student Profile.
+
+If the credentials are invalid, an appropriate error message is displayed.
+
+The application does not include actual passwords or private credentials in this README.
+
+4. Student Profile Management
+
+After successful authentication, the student can manage their profile.
+
+The application allows the authenticated student to:
+
+View their profile
+Edit their profile information
+Save changes
+Update their profile picture
+Use the device camera
+Log out
+
+The editable profile information includes:
+
+Full Name
+Course
+Year Level
+About Me
+Skills
+
+Changes to the profile are sent to the backend and saved in the database.
+
+5. Database Integration
+
+The application uses MySQL as its database technology.
+
+The database is managed and tested using phpMyAdmin through XAMPP.
+
+Student profile information stored in the database includes:
+
+Student ID
+Name
+Course
+Year Level
+About Me
+Skills
+Password
+Profile Picture or appropriate image reference
+
+Each student profile is associated with a specific Student ID.
+
+This allows the application to retrieve the correct student's profile after authentication.
+
+The database is the primary storage for student profile information rather than using browser local storage as the main profile database.
+
+6. API/Backend
+
+The application communicates with the database through a PHP backend/API.
+
+The basic architecture is:
+
+Cordova Application → PHP API/Backend → MySQL Database
+
+The Cordova application does not directly connect to the MySQL database.
+
+Instead, PHP API files handle requests such as:
+
+Login
+Retrieve profile
+Update profile
+Create records
+Delete records
+
+This approach separates the mobile application from the database and prevents database credentials from being exposed directly inside the Cordova application.
+
+7. CRUD Operations
+
+The application demonstrates the four fundamental CRUD operations.
+
+Create
+
+A student/profile record can be created in the database for demonstration and account setup purposes.
+
+Read
+
+The application retrieves the authenticated student's profile information from the MySQL database through the PHP API and displays it in the Student Profile.
+
+Update
+
+The student can edit their:
+
+Name
+Course
+Year Level
+About Me
+Skills
+
+The updated information is sent to the PHP backend and saved using a database update operation.
+
+Delete
+
+A controlled test record can be deleted through the appropriate backend/API operation.
+
+The delete operation is intended for demonstration of CRUD functionality and does not require deleting an actual personal student account.
+
+8. Camera Integration
+
+The camera functionality developed in Activity 6 is retained in Activity 7.
+
+The student can select:
 
 Change Profile Picture → Open Camera → Capture Image → Update Profile Picture
 
-When the user selects Change Profile Picture, the application uses the device camera to capture a new image.
+The Cordova Camera plugin provides access to the device camera.
 
-After the picture is captured, the application processes the returned image and displays it as the new profile picture.
+After an image is captured, the application displays the new profile picture.
 
-The new picture replaces the previous profile picture.
+The profile picture is associated with the student's profile through the application's backend/database implementation.
 
-## 5. Device Feature Integration
+9. Data Persistence
 
-Cordova is used because a normal web browser does not directly provide the same access to native Android device features.
+Student profile information is stored in the MySQL database.
 
-The Cordova Camera Plugin provides communication between the JavaScript application and the Android device camera.
+This allows the information to remain available after:
 
-The application waits for the Cordova `deviceready` event before using native Cordova functionality.
+Closing the application
+Restarting the application
+Logging out
+Logging in again
 
-The following plugins are used:
+The persistence process is:
 
-- cordova-plugin-camera
-- cordova-plugin-file
+Update Profile
 
-The Camera Plugin provides access to the device camera.
+↓
 
-The File Plugin allows the application to access and process the captured image file.
+Save to MySQL Database
 
-## 6. Image Handling
+↓
 
-After the user captures an image, the Camera Plugin returns the captured image to the application.
+Logout
 
-The File Plugin is used to access the captured image file.
+↓
 
-JavaScript reads the image and converts it into a format that can be displayed by the profile picture element.
+Login Again
 
-The new image is then assigned to the profile picture.
+↓
 
-The application also stores the processed image in localStorage so that the profile picture can be loaded again when the application starts.
+Retrieve Profile from Database
 
-The application therefore supports profile picture replacement and image persistence.
+↓
 
-## 7. Error Handling
+Display Updated Profile
 
-The application includes error and cancellation handling for the camera feature.
+Local storage may be used for local application/session information, but the main student profile information is stored in the database.
 
-### Camera Permission Denial
+10. Responsive Design
 
-If the application does not have permission to access the camera, the camera operation can fail and an error message is displayed.
+The application uses responsive HTML and CSS design so that the interface can adapt to different screen sizes.
 
-### Camera Cancellation
+The application is designed to work across:
 
-If the user cancels the camera operation, the application does not crash and the existing profile picture remains.
+Desktop
+Tablet
+Mobile
 
-### Camera Errors
+The layout, profile cards, navigation, forms, buttons, and other interface elements adjust according to the available screen size.
 
-If an error occurs while opening the camera or processing the captured image, the application displays an appropriate error message instead of crashing.
+11. Security
 
-## 8. Responsive Design
+Basic security practices are applied to the application.
 
-The application uses responsive HTML and CSS so that the interface can adapt to different screen sizes.
+These include:
 
-### Desktop
+Passwords are not stored as plain text.
+Database credentials are not exposed to the Cordova application.
+Sensitive credentials are not included in the public GitHub repository.
+Authentication is handled through the PHP backend.
+The Cordova application communicates with the backend/API instead of connecting directly to the database.
+User input is validated before processing.
+Login errors and API errors are handled appropriately.
 
-The application can be viewed on desktop computers with a wider layout.
+Actual database passwords, API keys, and private credentials are not included in this repository.
 
-### Tablet
+12. How to Run
+1. Start XAMPP
 
-The layout adjusts to tablet screen sizes while maintaining readable content and accessible controls.
+Open XAMPP Control Panel.
 
-### Mobile
+Start:
 
-The application adapts to smaller mobile screens. Buttons, text, profile information, and navigation remain usable on smaller displays.
+Apache
+MySQL
 
-## 9. How to Run
+Both services must be running.
 
-### Requirements
+2. Configure the Database
 
-Install the following:
+Open phpMyAdmin:
 
-- Node.js
-- Apache Cordova
-- Java JDK
-- Android Studio
-- Android SDK
-- Android device with USB debugging enabled
+http://localhost/phpmyadmin
 
-### Install Cordova
+Create or import the required MySQL database and tables.
 
-```bash
-npm install -g cordova
+Make sure the required student account and profile records are available for testing.
+
+3. Configure the PHP Backend
+
+Place the backend files inside the XAMPP web directory:
+
+C:\xampp\htdocs\student_api
+
+The backend contains the required PHP API files for database connection, authentication, profile retrieval, profile updates, and CRUD operations.
+
+4. Test the Backend
+
+On the development computer, test the backend using:
+
+http://localhost/student_api/test.php
+
+The API can also be accessed through the computer's local network IP when testing from an Android device.
+
+5. Open the Cordova Project
+
+Open Git Bash or a terminal in the Cordova project directory:
+
+Alavanza_StudentProfile
+6. Install/Configure Cordova Dependencies
+
+Install the required Cordova plugins and Android platform as specified by the project configuration.
+
+The Activity 6 Camera plugin is retained for camera functionality.
+
+7. Prepare the Android Project
+
+Run:
+
+cordova prepare android
+8. Build the Application
+
+Run:
+
+cordova build android
+9. Run on an Android Device
+
+Connect the Android phone or tablet with USB debugging enabled.
+
+Then run:
+
+cordova run android
+
+The application will be installed on the connected Android device.
+
+10. Test the Application
+
+Test the following flow:
+
+Login → Student Profile → Edit Profile → Save → Change Profile Picture → Logout → Login Again
+
+Verify that the updated profile information remains available after logging in again.
+
+13. Test Accounts
+
+The application uses demonstration accounts created specifically for testing.
+
+Example:
+
+Student ID: 2026001
+Password: [demo password configured in the local test database]
+

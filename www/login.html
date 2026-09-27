@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Login | Student Profile</title> <link rel="stylesheet" href="style.css"> </head>
+
+<body>
+
+<main class="login-page">
+
+<section class="login-card">
+
+    <div class="login-header">
+        <p class="label">STUDENT PROFILE</p>
+
+        <h1>Welcome Back</h1>
+
+        <p>
+            Login to access your Student Profile.
+        </p>
+    </div>
+
+    <form id="loginForm">
+
+        <div class="form-group">
+            <label for="loginStudentId">
+                Student ID
+            </label>
+
+            <input
+                type="text"
+                id="loginStudentId"
+                placeholder="Enter your Student ID"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="loginPassword">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+            >
+        </div>
+
+        <button
+            type="submit"
+            class="save-button login-button"
+        >
+            Login
+        </button>
+
+        <p
+            id="loginMessage"
+            class="login-message"
+        ></p>
+
+    </form>
+
+</section>
+
+</main>
+
+<script src="cordova.js"></script>
+
+<script> const API_URL = "http://192.168.100.32/student_api"; document.getElementById("loginForm").addEventListener("submit", function(event) { event.preventDefault(); const studentId = document.getElementById("loginStudentId").value.trim(); const password = document.getElementById("loginPassword").value; const loginMessage = document.getElementById("loginMessage"); if (studentId === "") { loginMessage.textContent = "Please enter your Student ID."; return; } if (password === "") { loginMessage.textContent = "Please enter your password."; return; } loginMessage.textContent = "Logging in..."; fetch(API_URL + "/login.php", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ student_id: studentId, password: password }) }) .then(response => { if (!response.ok) { throw new Error("Server error: " + response.status); } return response.json(); }) .then(data => { if (data.success) { localStorage.setItem( "loggedInStudent", data.student_id || studentId ); loginMessage.textContent = "Login successful. Opening profile..."; setTimeout(function() { window.location.href = "index.html"; }, 500); } else { loginMessage.textContent = data.message || "Invalid student ID or password."; } }) .catch(error => { console.error(error); loginMessage.textContent = "Unable to connect to the server."; }); }); </script>
+
+</body> </html>
