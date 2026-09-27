@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,189 +10,256 @@
 
 <body>
 
-    <header>
-        <div class="header-content">
+```
+<header>
+    <div class="header-content">
 
-            <img
-    id="profilePicture"
-    class="profile-picture"
-    src="profile.jpg"
-    alt="Student profile picture"
->
+        <img
+            id="profilePicture"
+            class="profile-picture"
+            src="profile.jpg"
+            alt="Student profile picture"
+        >
 
-<button
-    type="button"
-    class="change-picture-button"
-    onclick="takeProfilePicture()"
->
-    Change Profile Picture
-</button>
+        <button
+            type="button"
+            class="change-picture-button"
+            onclick="takeProfilePicture()"
+        >
+            Change Profile Picture
+        </button>
 
-            <div class="intro">
-                <p class="label">MY STUDENT PROFILE</p>
+        <div class="intro">
 
-                <h1 class="profile-name">Denn Paul M. Alavanza</h1>
+            <p class="label">MY STUDENT PROFILE</p>
 
-                <p class="subtitle">
-                    BSIT Student • Creative Learner • Future Web Developer
-                </p>
+            <h1 class="profile-name">
+                Denn Paul M. Alavanza
+            </h1>
 
-                <nav>
-                    <a href="index.html">Profile</a>
-                    <a href="about.html">About</a>
-                    <a href="skills.html">Skills</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-            </div>
+            <p class="subtitle">
+                BSIT Student • Creative Learner • Future Web Developer
+            </p>
 
-        </div>
-    </header>
-
-    <main class="single-page">
-
-        <div id="profileView">
-
-            <section class="card">
-
-                <h2>Welcome to My Profile</h2>
-
-                <div class="profile-details">
-                    <p>
-                        <strong>Course:</strong>
-                        <span class="profile-course">BS Information Technology</span>
-                    </p>
-
-                    <p>
-                        <strong>Year Level:</strong>
-                        <span class="profile-year">4th Year</span>
-                    </p>
-                </div>
-
-                <p class="profile-about">
-                    I am a BSIT student interested in technology, web development,
-                    programming, and learning new things.
-                </p>
-
-                <p>
-                    This website showcases my background, skills, projects,
-                    and contact information as a student in Information Technology.
-                </p>
-
-                <div class="home-links">
-                    <a href="about.html">Learn More About Me</a>
-                    <a href="skills.html">View My Skills</a>
-                    <a href="projects.html">See My Projects</a>
-                </div>
-
-            </section>
-
-            <section class="card">
-
-                <h2>My Skills</h2>
-
-                <p class="profile-skills">
-                    HTML, CSS, Java, Problem Solving, Teamwork, Communication
-                </p>
-
-            </section>
-
-            <section class="card highlight">
-
-                <h2>My Goal</h2>
-
-                <p>
-                    To continue learning and improve my skills in web development,
-                    programming, and technology while creating useful and
-                    user-friendly applications.
-                </p>
-
-            </section>
-
-            <div class="edit-button-container">
-                <button class="edit-button" onclick="openEditProfile()">
-                    Edit Profile
-                </button>
-            </div>
+            <nav>
+                <a href="index.html">Profile</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </nav>
 
         </div>
 
-        <section id="editProfile" class="card edit-profile">
+    </div>
+</header>
 
-            <h2>Edit Profile</h2>
+<main class="single-page">
 
-            <form onsubmit="event.preventDefault(); saveProfile();">
+    <div id="profileView">
 
-                <div class="form-group">
-                    <label for="editName">Full Name</label>
-                    <input
-                        type="text"
-                        id="editName"
-                        placeholder="Enter your full name"
-                    >
-                </div>
+        <section class="card">
 
-                <div class="form-group">
-                    <label for="editCourse">Course</label>
-                    <input
-                        type="text"
-                        id="editCourse"
-                        placeholder="Enter your course"
-                    >
-                </div>
+            <h2>Welcome to My Profile</h2>
 
-                <div class="form-group">
-                    <label for="editYear">Year Level</label>
-                    <input
-                        type="text"
-                        id="editYear"
-                        placeholder="Enter your year level"
-                    >
-                </div>
+            <div class="profile-details">
 
-                <div class="form-group">
-                    <label for="editAbout">About Me</label>
-                    <textarea
-                        id="editAbout"
-                        placeholder="Tell something about yourself"
-                    ></textarea>
-                </div>
+                <p>
+                    <strong>Course:</strong>
+                    <span class="profile-course">
+                        BS Information Technology
+                    </span>
+                </p>
 
-                <div class="form-group">
-                    <label for="editSkills">Skills</label>
-                    <textarea
-                        id="editSkills"
-                        placeholder="Enter your skills"
-                    ></textarea>
-                </div>
+                <p>
+                    <strong>Year Level:</strong>
+                    <span class="profile-year">
+                        4th Year
+                    </span>
+                </p>
 
-                <div class="form-buttons">
-                    <button type="submit" class="save-button">
-                        Save
-                    </button>
+            </div>
 
-                    <button
-                        type="button"
-                        class="cancel-button"
-                        onclick="cancelEdit()"
-                    >
-                        Cancel
-                    </button>
-                </div>
+            <p class="profile-about">
+                I am a BSIT student interested in technology,
+                web development, programming, and learning new things.
+            </p>
 
-            </form>
+            <p>
+                This website showcases my background, skills,
+                projects, and contact information as a student
+                in Information Technology.
+            </p>
+
+            <div class="home-links">
+                <a href="about.html">Learn More About Me</a>
+                <a href="skills.html">View My Skills</a>
+                <a href="projects.html">See My Projects</a>
+            </div>
 
         </section>
 
-    </main>
+        <section class="card">
 
-    <footer>
-        <p>© 2026 Denn Paul Alavanza</p>
-        <p>Student Profile · BSIT · Xavier University Ateneo de Cagayan</p>
-    </footer>
+            <h2>My Skills</h2>
 
-   <script src="cordova.js"></script>
+            <p class="profile-skills">
+                HTML, CSS, Java, Problem Solving, Teamwork, Communication
+            </p>
+
+        </section>
+
+        <section class="card highlight">
+
+            <h2>My Goal</h2>
+
+            <p>
+                To continue learning and improve my skills in web development,
+                programming, and technology while creating useful and
+                user-friendly applications.
+            </p>
+
+        </section>
+
+        <div class="edit-button-container">
+
+            <button
+                class="edit-button"
+                onclick="openEditProfile()"
+            >
+                Edit Profile
+            </button>
+
+        </div>
+
+    </div>
+
+    <section
+        id="editProfile"
+        class="card edit-profile"
+    >
+
+        <h2>Edit Profile</h2>
+
+        <form onsubmit="event.preventDefault(); saveProfile();">
+
+            <div class="form-group">
+
+                <label for="editName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="editName"
+                    placeholder="Enter your full name"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="editCourse">
+                    Course
+                </label>
+
+                <input
+                    type="text"
+                    id="editCourse"
+                    placeholder="Enter your course"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="editYear">
+                    Year Level
+                </label>
+
+                <input
+                    type="text"
+                    id="editYear"
+                    placeholder="Enter your year level"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="editAbout">
+                    About Me
+                </label>
+
+                <textarea
+                    id="editAbout"
+                    placeholder="Tell something about yourself"
+                ></textarea>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="editSkills">
+                    Skills
+                </label>
+
+                <textarea
+                    id="editSkills"
+                    placeholder="Enter your skills"
+                ></textarea>
+
+            </div>
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    Save
+                </button>
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    onclick="cancelEdit()"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 Denn Paul Alavanza
+    </p>
+
+    <p>
+        Student Profile · BSIT · Xavier University Ateneo de Cagayan
+    </p>
+
+</footer>
+
+<script>
+    const loggedInStudent =
+        localStorage.getItem("loggedInStudent");
+
+    if (!loggedInStudent) {
+        window.location.href = "login.html";
+    }
+</script>
+
+<script src="cordova.js"></script>
 <script src="script.js"></script>
+```
 
 </body>
 </html>
